@@ -10,39 +10,42 @@ robot = Robot()
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
 
-# You should insert a getDevice-like function in order to get the
-# instance of a device of the robot. Something like:
-#  motor = robot.getDevice('motorname')
-#  ds = robot.getDevice('dsname')
-#  ds.enable(timestep)
+target_shoulder_position = 0.6
+target_elbow_position = -2.1
+target_wrist_position = 1
+target_shoulder_roll = 27
 
-joint_motor = robot.getDevice("joint_1")
-joint_sensor = robot.getDevice("joint_1_sensor")
-joint_sensor.enable(timestep)
-joint_motor.setPosition(float('inf'))
-joint_motor.setVelocity(0.5)
-target_position = -1.57
 
-# Main loop:
-# - perform simulation steps until Webots is stopping the controller
+shoulder_pitch_motor = robot.getDevice("joint_2")
+shoulder_pitch_sensor = robot.getDevice("joint_2_sensor")
+shoulder_pitch_sensor.enable(timestep)
+shoulder_pitch_motor.setPosition(target_shoulder_position)
+shoulder_pitch_motor.setVelocity(0.5)
+
+elbow_pitch_motor = robot.getDevice("joint_3")
+elbow_pitch_sensor = robot.getDevice("joint_3_sensor")
+elbow_pitch_sensor.enable(timestep)
+elbow_pitch_motor.setPosition(target_elbow_position)
+elbow_pitch_motor.setVelocity(0.5)
+
+wrist_pitch_motor = robot.getDevice("joint_5")
+wrist_pitch_sensor = robot.getDevice("joint_5_sensor")
+wrist_pitch_sensor.enable(timestep)
+wrist_pitch_motor.setPosition(target_wrist_position)
+wrist_pitch_motor.setVelocity(0.5)
+
+
+shoulder_roll_motor = robot.getDevice("joint_1")
+shoulder_roll_sensor = robot.getDevice("joint_1_sensor")
+shoulder_roll_sensor.enable(timestep)
+shoulder_roll_motor.setVelocity(0.5)
+
 while robot.step(timestep) != -1:
-    # Read the sensors:
-    # Enter here functions to read sensor data, like:
-    #  val = ds.getValue()
 
-    # Process sensor data here.
-
-    # Enter here functions to send actuator commands, like:
-    #  motor.setPosition(10.0)
-    current_position = joint_sensor.getValue()
-
-    # Check if the joint has reached the target position
-    if current_position > target_position:
-        # Move the joint motor to the target angle
-        joint_motor.setVelocity(0.5)  # Move at controlled speed
-    else:
-        # Stop the motor once the target is reached
-        joint_motor.setVelocity(0)
-        break 
-
-# Enter here exit cleanup code.
+    # start line drawing once itsin place
+    if abs(shoulder_pitch_sensor.getValue() - target_shoulder_position) < 0.01:
+        if abs(elbow_pitch_sensor.getValue() - target_elbow_position) < 0.01:
+            if abs(wrist_pitch_sensor.getValue() - target_wrist_position) < 0.01:
+                print(shoulder_roll_sensor.getValue())
+                shoulder_roll_motor.setPosition(target_shoulder_roll)
+                break
