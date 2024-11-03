@@ -1,0 +1,79 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
+EXTERNPROTO "C:/Users/valer/Downloads/se390/protos/GEN3-6DOF_VISION.proto"
+
+WorldInfo {
+  info [
+    "DARwIn-OP robot."
+    "This world file is similar to visual_tracking.wbt, except that the ROBOTIS OP2 robot was replaced by a DARwIn-OP robot."
+    "The DARwIn-OP robot simulation model can be programmed similarly to the ROBOTIS OP2 model."
+    "When transferring (remote control or remote compilation) to a real robot, please ensure you have the corresponding simulation model."
+    "A DARwIn-OP simulation model won't be able to transfer to a real ROBOTIS OP2 robot and vice versa."
+  ]
+  title "DARwIn-OP"
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.23144394822689643 0.12356840227459584 0.9649686776203926 2.1901284674170465
+  position 2.466717325215187 -3.516545601029533 3.058920929607814
+  follow "DARwIn-OP"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Table {
+  translation -0.506394 1.30854 5.32906e-15
+  rotation 0 0 -1 0.575959
+}
+Floor {
+  tileSize 1 1
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/carpet.jpg"
+      ]
+    }
+    roughness 1
+    metalness 0
+  }
+}
+DEF BALL Ball {
+  translation 2.965229810003907 2.138711416742924 0.03245683600000001
+  rotation -1.0086958829126558e-12 2.0087374842841616e-13 -1 0.9034675020352899
+  color 1 0 0
+}
+GEN3-6DOF_VISION {
+  hidden position_0_0 28.183849742227586
+  hidden rotation_1 -0.04522663770270384 0.9989767520460245 1.066228376836109e-05 3.141592985843226
+  hidden position_1_0 1.2069726284067732e-08
+  hidden linearVelocity_1 0.005159103074144515 0.0005004782078599071 -3.503769699454249e-09
+  hidden angularVelocity_1 -6.834984316427266e-11 -3.4995068643184755e-06 -0.49999999998711425
+  hidden rotation_2 1 -6.034865105914486e-09 6.034838997715159e-09 1.5707999999999998
+  hidden position_2_0 -1.781614552331006e-09
+  hidden linearVelocity_2 -0.0120764870526049 -0.001162060854660131 8.121881419918653e-09
+  hidden angularVelocity_2 -3.5984538322216514e-08 -3.137128319465533e-06 -0.499999999996617
+  hidden rotation_3 1 8.908072761204425e-10 -9.507768745745509e-15 3.1416
+  hidden position_3_0 4.6196156791074783e-11
+  hidden linearVelocity_3 0.004283079359925525 0.00039686109385841516 -2.758260338410866e-09
+  hidden angularVelocity_3 1.1474156946073945e-07 -4.655164762842827e-06 -0.4999999999594182
+  hidden rotation_4 1 -2.3098085943843694e-11 2.3097986003380742e-11 1.5707999999999998
+  hidden position_4_0 -5.857869306098792e-09
+  hidden linearVelocity_4 -0.003723684431464335 -0.00035240736050863776 2.4649674334982613e-09
+  hidden angularVelocity_4 1.1472782854952668e-07 -4.655051112038538e-06 -0.5000004151327575
+  hidden rotation_5 -1 -2.9289356102068002e-09 -2.9289229373307052e-09 1.5707999999999984
+  hidden position_5_0 -4.527067712372282e-08
+  hidden linearVelocity_5 0.004921372147292581 0.00046687259041331905 -3.270897422464602e-09
+  hidden angularVelocity_5 1.1559854803879414e-07 -4.663690134135797e-06 -0.500000415131528
+  hidden rotation_6 0.9999999999999996 2.2806442910391072e-08 -2.280634423180375e-08 1.5707999999999995
+  hidden linearVelocity_6 -0.0049878912097220856 -0.000613883757083748 4.624735481684171e-09
+  hidden angularVelocity_6 1.1559766219112932e-07 -4.663678665354604e-06 -0.4999999658481623
+  translation -0.556106 1.09838 0.617
+  rotation 0 0 1 3.14159
+  controller "my_controller"
+}
