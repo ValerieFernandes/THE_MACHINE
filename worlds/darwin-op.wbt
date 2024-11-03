@@ -5,7 +5,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Table.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
-EXTERNPROTO "C:/Users/valer/Downloads/se390/protos/GEN3-6DOF_VISION.proto"
+EXTERNPROTO "./GEN3-6DOF_VISION.proto"
 
 WorldInfo {
   info [
