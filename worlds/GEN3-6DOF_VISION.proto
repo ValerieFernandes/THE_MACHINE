@@ -4,6 +4,8 @@
 # This is a proto file for Webots for the GEN3-6DOFVISIONURDFARMV01
 # Extracted from: GEN3-6DOF_VISION_URDF_ARM_V01.urdf
 
+EXTERNPROTO "./Robotiq2f140Gripper.proto"
+
 PROTO GEN3-6DOF_VISION [
   field  SFVec3f     translation  0 0 0
   field  SFRotation  rotation     0 1 0 0
@@ -13,7 +15,7 @@ PROTO GEN3-6DOF_VISION [
   field SFBool     supervisor      FALSE             # Is `Robot.supervisor`.
   field SFBool     synchronization TRUE              # Is `Robot.synchronization`.
   field SFBool     selfCollision   TRUE              # Is `Robot.selfCollision`.
-  field MFNode     toolSlot        []                # Extend the robot with new nodes at the end of the arm.
+  field MFNode     toolSlot        [Robotiq2f140Gripper { } ]                # Extend the robot with new nodes at the end of the arm.
   field SFBool     staticBase      TRUE              # Defines if the robot base should ba pinned to the static environment.
   field SFBool     nonDeterministic TRUE 
 ]
