@@ -6,7 +6,7 @@
 # template language: javascript
 # A 2-finger adaptive robot gripper from ROBOTIQ with 140 mm opening.
 
-EXTERNPROTO "webots://projects/appearances/protos/BrushedAluminium.proto"
+#EXTERNPROTO "webots://projects/appearances/protos/BrushedAluminium.proto"
 
 PROTO Robotiq2f140Gripper [
   field  SFVec3f     translation  0 0 0
@@ -14,6 +14,7 @@ PROTO Robotiq2f140Gripper [
   field  SFString    name         "ROBOTIQ 2F-140 Gripper"
 ]
 {
+  
   Solid {
     translation IS translation
     rotation IS rotation
@@ -52,10 +53,12 @@ PROTO Robotiq2f140Gripper [
           rotation 1 0 0 2.295796
           children [
             DEF OUTER_KNUCKLE Shape {
-              appearance BrushedAluminium {
-                textureTransform TextureTransform {
-                  scale 3 5
-                }
+              appearance PBRAppearance {
+                baseColor 0.752940 0.752940 0.752940
+                transparency 0.000000
+                roughness 1.000000
+                metalness 0
+                emissiveColor 0.000000 0.000000 0.000000
               }
               geometry Mesh {
                 url "meshes/robotiq_2f140_outer_knuckle.stl"
@@ -337,7 +340,8 @@ PROTO Robotiq2f140Gripper [
                         translation 0 0.045755 -0.02722
                         rotation 1 0 0 -0.01
                         children [
-                          USE INNER_FINGER_PAD
+                  USE INNER_FINGER_PAD
+                        
                         ]
                         name "right inner finger pad"
                         contactMaterial "ROBOTIQ gripper pad"
