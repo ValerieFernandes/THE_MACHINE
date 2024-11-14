@@ -15,7 +15,12 @@ PROTO GEN3-6DOF_VISION [
   field SFBool     supervisor      FALSE             # Is `Robot.supervisor`.
   field SFBool     synchronization TRUE              # Is `Robot.synchronization`.
   field SFBool     selfCollision   TRUE              # Is `Robot.selfCollision`.
-  field MFNode     toolSlot        [Robotiq2f140Gripper { } ]                # Extend the robot with new nodes at the end of the arm.
+  field MFNode       toolSlot        [
+        Robotiq2f140Gripper { },
+        
+
+
+  ]                         # Extend the robot with new nodes at the end of the arm.
   field SFBool     staticBase      TRUE              # Defines if the robot base should ba pinned to the static environment.
   field SFBool     nonDeterministic TRUE 
 ]

@@ -12,6 +12,7 @@ PROTO Robotiq2f140Gripper [
   field  SFVec3f     translation  0 0 0
   field  SFRotation  rotation     0 0 1 0
   field  SFString    name         "ROBOTIQ 2F-140 Gripper"
+  field MFNode       toolSlot     [ Pen { } ]  
 ]
 {
   
@@ -97,6 +98,12 @@ PROTO Robotiq2f140Gripper [
                               size 0.027 0.065 0.0075
                             }
                           }
+                          Transform {
+                            translation 0 0.003 -0.008
+                            rotation 1 0 0 -1.2
+                            children IS toolSlot
+                          }
+
                         ]
                         name "left inner finger pad"
                         contactMaterial "ROBOTIQ gripper pad"
