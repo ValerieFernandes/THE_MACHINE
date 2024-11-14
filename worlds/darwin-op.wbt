@@ -31,6 +31,18 @@ Table {
   translation -0.506394 1.30854 5.32906e-15
   rotation 0 0 -1 0.575959
 }
+Transform {
+  translation -0.178313 1.78476 0.75
+  rotation 0 0 1 -0.523595307179586
+  children [
+    TexturedBoxShape {
+      size 0.6 0.5 0.01
+      textureUrl [
+        "textures/whitepaper.png"
+      ]
+    }
+  ]
+}
 Floor {
   tileSize 1 1
   appearance PBRAppearance {
