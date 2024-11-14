@@ -16,8 +16,8 @@ PROTO GEN3-6DOF_VISION [
   field SFBool     synchronization TRUE              # Is `Robot.synchronization`.
   field SFBool     selfCollision   TRUE              # Is `Robot.selfCollision`.
   field MFNode       toolSlot        [
-        # Robotiq2f140Gripper { },
-        Pen {}
+        Robotiq2f140Gripper { },
+        
 
 
   ]                         # Extend the robot with new nodes at the end of the arm.
