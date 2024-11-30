@@ -5,5 +5,5 @@ sceneTreePerspectives: 000000ff000000010000000300000026000000c0000000fa010000000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: 1 "controllers/my_controller/my_controller.py" "worlds/GEN3-6DOF_VISION.proto" "worlds/Robotiq2f140Gripper.proto" "protos/TexturedBoxShape.proto"
+textFiles: 0 "controllers/my_controller/my_controller.py" "worlds/Robotiq2f140Gripper.proto"
 consoles: Console:All:All

@@ -10,12 +10,14 @@ robot = Robot()
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
 
-target_shoulder_position = 0.6
-target_elbow_position = -2.1
-target_wrist_position = 1
+target_shoulder_position = 0.5
+target_elbow_position = -1.9
+target_wrist_position = 1.2
 target_shoulder_roll = 27
 target_left_finger = 0.7
 target_right_finger = 0.7
+target_wrist_roll = -1.6
+target_wrist_turn = -0.7
 
 
 shoulder_pitch_motor = robot.getDevice("joint_2")
@@ -36,6 +38,10 @@ wrist_pitch_sensor.enable(timestep)
 wrist_pitch_motor.setPosition(target_wrist_position)
 wrist_pitch_motor.setVelocity(0.5)
 
+wrist_turn_motor = robot.getDevice("joint_6")
+wrist_turn_sensor = robot.getDevice("joint_6_sensor")
+wrist_turn_sensor.enable(timestep)
+
 
 shoulder_roll_motor = robot.getDevice("joint_1")
 shoulder_roll_sensor = robot.getDevice("joint_1_sensor")
@@ -49,6 +55,10 @@ right_finger_sensor = robot.getDevice("ROBOTIQ 2F-140 Gripper right finger joint
 left_finger_sensor.enable(timestep)
 right_finger_sensor.enable(timestep)
 
+wrist_roll_motor = robot.getDevice("joint_4")
+wrist_roll_sensor = robot.getDevice("joint_4_sensor")
+wrist_roll_sensor.enable(timestep)
+
 while robot.step(timestep) != -1:
 
     # gripper grips when in place
@@ -61,6 +71,11 @@ while robot.step(timestep) != -1:
                 left_finger_motor.setVelocity(0.3)
                 right_finger_motor.setPosition(target_right_finger)
                 right_finger_motor.setVelocity(0.3)
+                wrist_roll_motor.setPosition(target_wrist_roll)
+                wrist_roll_motor.setVelocity(0.5)
+                wrist_turn_motor.setPosition(target_wrist_turn)
+                wrist_turn_motor.setVelocity(0.5)
+
                 
     # start line drawing once its gripped
     if abs(left_finger_sensor.getValue() - target_left_finger) < 0.01:
