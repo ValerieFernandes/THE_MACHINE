@@ -6,6 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
 EXTERNPROTO "C:/Users/valer/OneDrive/Documents/fypd/worlds/GEN3-6DOF_VISION.proto"
+EXTERNPROTO "C:/Users/valer/OneDrive/Documents/fypd/worlds/Robotiq2f140Gripper.proto"
 
 WorldInfo {
   info [
@@ -61,19 +62,18 @@ DEF BALL Ball {
   color 1 0 0
 }
 GEN3-6DOF_VISION {
-  hidden position_0_0 28.183849742227586
-  hidden rotation_1 -0.04522663770270384 0.9989767520460245 1.0662283768365455e-05 3.141592985843226
-  hidden position_1_0 1.2069726284067732e-08
-  hidden rotation_2 1 -6.034865105914487e-09 6.03483899771516e-09 1.5707999999999998
-  hidden position_2_0 -1.781614552331006e-09
-  hidden rotation_3 1 8.908072761204425e-10 -9.507768745745509e-15 3.1416
-  hidden position_3_0 4.6196156791074783e-11
-  hidden rotation_4 1 -4.6196171887686276e-11 4.6195972006759145e-11 1.5707999999999998
-  hidden position_4_0 -5.857869306098792e-09
-  hidden rotation_5 -1 -2.9289356102068002e-09 -2.9289229373307052e-09 1.5707999999999984
-  hidden position_5_0 -4.527067712372282e-08
-  hidden rotation_6 0.9999999999999996 2.2806442910391076e-08 -2.2806344231803754e-08 1.570799999999999
+  hidden rotation_4 1 -9.239234377537032e-11 9.239194401351363e-11 1.5708
   translation -0.556106 1.09838 0.617
   rotation 0 0 1 3.14159
   controller "my_controller"
+  toolSlot [
+    Robotiq2f140Gripper {
+      toolSlot [
+        Pen {
+          rotation 0.09245003270420488 -0.9245003270420487 0.3698001308168195 3.14
+          maxDistance 1e+38
+        }
+      ]
+    }
+  ]
 }
