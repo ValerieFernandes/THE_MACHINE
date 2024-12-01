@@ -1,11 +1,24 @@
 import streamlit as st
 from controller import Robot
 
+# Custom CSS to make the slider color pink
+st.markdown(
+    """
+    <style>
+    .stSlider > div > div > div > div {
+        background: pink !important; /* Change the slider filled bar color */
+    }
+    .stSlider > div > div > div > div:nth-child(3) {
+        background: #ffc0cb !important; /* Change the slider empty bar color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # Define a placeholder for painting initiation logic
 def start_painting(thickness):
-    # Replace this with actual painting initiation logic
-    st.write(f"Painting initiated with thickness: {thickness}")
+    st.session_state["output"] += f"Painting initiated with thickness: {thickness}\n"
     # create the Robot instance.
     robot = Robot()
 
@@ -67,22 +80,48 @@ def start_painting(thickness):
         if abs(left_finger_sensor.getValue() - target_left_finger) < 0.01:
             if abs(right_finger_sensor.getValue() - target_right_finger) < 0.01:
                     shoulder_roll_motor.setPosition(target_shoulder_roll)
-                    # break
+                    break
 
-        
-                    
+    st.session_state["output"] += "\nRobot initialized for painting.\n"
 
+def update_z_value(z_value):
+    st.session_state["output"] += f"Updating Z value to: {z_value}\n"
+    # robot = Robot()
+    # timestep = int(robot.getBasicTimeStep())
+    
+    # # Target Z position logic
+    # target_z_position = z_value
+    
+    # # Set Z motor position
+    # z_motor = robot.getDevice("joint_z")
+    # z_motor_sensor = robot.getDevice("joint_z_sensor")
+    # z_motor_sensor.enable(timestep)
+    # z_motor.setPosition(target_z_position)
+    # z_motor.setVelocity(0.5)
+    
+    # while robot.step(timestep) != -1:
+    #     # Check if Z motor has reached the target position
+    #     if abs(z_motor_sensor.getValue() - target_z_position) < 0.01:
+    #         st.session_state["output"] += "\nZ position updated successfully."
+    #         break
+
+# Initialize session state for output text
+if "output" not in st.session_state:
+    st.session_state["output"] = "Welcome to MAVA!\n"
 
 # Set the title of the app
 st.title("MAVA")
 
-# Add a slider to the app
-slider_value = st.slider("Input desired thickness (mm)", min_value=1, max_value=26, value=6)
+# Define a single slider at the top level
+slider_value = st.slider("Input desired value (mm or Z)", min_value=1, max_value=26, value=6)
+# st.write(f"Selected value: {slider_value}")
 
-# Display the selected slider value
-st.write(f"Selected value: {slider_value}")
-
-# Add a button to start painting
-if st.button("Start Painting"):
-    # When the button is clicked, initiate the painting process
+# Add buttons for actions
+if st.button("Input Z value"):
     start_painting(slider_value)
+
+if st.button("Update Z Value"):
+    update_z_value(slider_value)
+
+# Display persistent output text
+st.text_area("Output Log", st.session_state["output"], height=200)
